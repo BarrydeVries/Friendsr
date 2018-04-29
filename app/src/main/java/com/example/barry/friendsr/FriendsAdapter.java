@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +27,15 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item, parent, false);
         }
+
+        // get access to relevant xml objects
         ImageView photo = convertView.findViewById(R.id.Photo);
         TextView name = convertView.findViewById(R.id.Name);
-
         Friend aFriend = (Friend) friends.get(position);
-
         Drawable imageId = getContext().getResources().getDrawable(aFriend.getDrawable());
 
+        // set content
         name.setText(aFriend.getName());
-        Log.d(aFriend.getName(), "name");
         photo.setImageDrawable(imageId);
         return convertView;
     }
